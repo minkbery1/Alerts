@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import AlertExample from "./AlertExample";
+import AlertManager from "./AlertManager";
+import { AlertProvider } from "./AlertProvider";
+import AlertReducer from "./AlertReducer";
 
 function App() {
+  const initialState = {
+    alerts: [],
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Alert Case Study</h1>
+      <AlertProvider initialState={initialState} reducer={AlertReducer}>
+        <div className="AlertExample">
+          <AlertExample />
+        </div>
+        <div className="AlertManagerContainer">
+          <AlertManager />
+        </div>
+      </AlertProvider>
     </div>
   );
 }
