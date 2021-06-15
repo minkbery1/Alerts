@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert } from "@material-ui/lab";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 function AlertComponent(props) {
   const onClick = function () {
@@ -8,8 +8,9 @@ function AlertComponent(props) {
   };
 
   return (
-    <Alert onClick={onClick} severity={props.alertTypes}>
-      {props.title}
+    <Alert onClick={onClick} severity={props.alertType}>
+      {props.alertTitle && <AlertTitle>{props.alertTitle}</AlertTitle>}
+      {props.text}
     </Alert>
   );
 }
